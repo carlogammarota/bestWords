@@ -10,6 +10,23 @@ Vue.use(Vuex);
 
 Vue.config.productionTip = false
 
+
+import firebase from "firebase"
+import "firebase/firestore"
+import firebaseConfig from "./config/firebase"
+
+firebase.initializeApp(firebaseConfig);
+
+//con este parametro accedemos a las colecciones que se encuentran en la db firestore
+export const db = firebase.firestore();
+
+db.settings({
+  timestampsInSnapshots: true
+});
+
+export default db;
+
+
 new Vue({
   store,
   render: h => h(App),
